@@ -1,14 +1,21 @@
-const areYou = (birhdayDate) => {
-    const birthday = new Date(birhdayDate)
-const now = new Date()
-const almost = now - birthday
-const fourteen = new Date(1984, 0, 1)
-if(almost < fourteen){
-    return false
+function countdownTimer() {
+    const newYear = new Date(new Date().getFullYear() + 1, 0, 1);
+
+    function calculateTimeLeft() {
+        const currentTime = new Date();
+        const timeLeft = newYear - currentTime;
+
+        const months = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 30));
+        const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerText =  `${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left until the New Year!`;
+       
+    }
+    setInterval(() => {
+        console.log(calculateTimeLeft());
+    }, 1000);
 }
-return true
-}
-const date1 = '2022-01-11'
-const date2 = '1999-03-14'
-console.log(areYou(date1))
-console.log(areYou(date2))
+countdownTimer()
