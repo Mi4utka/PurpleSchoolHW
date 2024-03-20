@@ -1,17 +1,19 @@
-const makeMeUniquePlease = 
-[
-    {id : 1, name : 'Вася'},
-    {id : 2, name : 'Вася'},
-    {id : 1, name : 'Вася'}
-]
+const uni = (arr) => {
+  const uniqueArray = [];
+  const idsSet = new Set();
 
- const almostThere = new Set(makeMeUniquePlease.map((obj) => obj.id))
- const res = []
- for(const id of almostThere){
-    res.push(makeMeUniquePlease.find((elem) => {
-if(elem.id === id){
-    return elem.name
-}
-    }))}
- 
- console.log(res)
+  arr.forEach((obj) => {
+    if (!idsSet.has(obj.id)) {
+      idsSet.add(obj.id);
+      uniqueArray.push(obj);
+    }
+  });
+
+  return uniqueArray;
+};
+const makeMeUniquePlease = [
+  { id: 1, name: 'Вася' },
+  { id: 2, name: 'Вася' },
+  { id: 1, name: 'Вася' },
+];
+console.log(uni(makeMeUniquePlease));
