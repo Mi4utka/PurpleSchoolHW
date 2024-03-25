@@ -1,36 +1,26 @@
-const Hero = function (race, name, language) {
-  this.race = race;
-  this.name = name;
-  this.language = language;
-};
-Hero.prototype.speak = function () {
-  console.log(this.language);
-  console.log(this.name);
-};
+class Car {
+  #name;
 
-const Ork = function (race, name, language, weapon) {
-  Hero.call(this, race, name, language);
-  this.weapon = weapon;
-};
-Ork.prototype = Object.create(Hero.prototype);
-Ork.prototype.constructor = Ork;
+  #model;
 
-Ork.prototype.attack = function () {
-  console.log('gg');
-};
+  #_run;
 
-const Elf = function (race, name, language, spell) {
-  Hero.call(this, race, name, language);
-  this.spell = spell;
-};
-Elf.prototype = Object.create(Hero.prototype);
-Elf.prototype.constructor = Elf;
+  constructor(name, model, run) {
+    this.#name = name;
+    this.#model = model;
+    this.#_run = run;
+  }
 
-Elf.prototype.createSpell = function () {
-  console.log('nt');
-};
+  get run() {
+    return this.#_run;
+  }
 
-const elf = new Elf('none', 'john', 'eng', 'fireball');
-const ork = new Ork('none', 'Nikita', 'ru', 'sword');
-ork.attack();
-elf.createSpell();
+  set run(newRun) {
+    this.#_run = newRun;
+  }
+}
+const car = new Car('Kia', 'Rio', 100500);
+console.log(car);
+console.log(car.run);
+car.run = 10005003;
+console.log(car.run);
