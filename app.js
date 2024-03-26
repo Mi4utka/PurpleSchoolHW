@@ -1,40 +1,22 @@
 // eslint-disable-next-line max-classes-per-file
-class Hero {
-  constructor(race, name, language) {
-    this.race = race;
-    this.name = name;
-    this.language = language;
+class Billing {
+  constructor(amount) {
+    this.amount = amount;
   }
 
-  talk() {
-    console.log(`${this.race} - ${this.language}`);
+  calculateTotal() {
+    return this.amount;
   }
 }
-class Elf extends Hero {
-  constructor(race, name, language, spell) {
-    super(race, name, language);
-    this.spell = spell;
-  }
 
-  talk() {
-    console.log(`My name is ${this.name}`);
-  }
-
-  magic() {
-    console.log(this.spell);
+class HourBilling extends Billing {
+  calculateTotal(hour) {
+    return this.amount * hour;
   }
 }
-class Ork extends Hero {
-  constructor(race, name, language, sword) {
-    super(race, name, language);
-    this.sword = sword;
-  }
 
-  talk() {
-    console.log(`My second name is ${this.name}`);
-  }
-
-  damage() {
-    console.log(this.sword);
+class ItemBilling extends Billing {
+  calculateTotal(itemsCount) {
+    return this.amount * itemsCount;
   }
 }
