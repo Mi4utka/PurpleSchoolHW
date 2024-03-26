@@ -1,26 +1,40 @@
-class Car {
-  #name;
-
-  #model;
-
-  #_run;
-
-  constructor(name, model, run) {
-    this.#name = name;
-    this.#model = model;
-    this.#_run = run;
+// eslint-disable-next-line max-classes-per-file
+class Hero {
+  constructor(race, name, language) {
+    this.race = race;
+    this.name = name;
+    this.language = language;
   }
 
-  get run() {
-    return this.#_run;
-  }
-
-  set run(newRun) {
-    this.#_run = newRun;
+  talk() {
+    console.log(`${this.race} - ${this.language}`);
   }
 }
-const car = new Car('Kia', 'Rio', 100500);
-console.log(car);
-console.log(car.run);
-car.run = 10005003;
-console.log(car.run);
+class Elf extends Hero {
+  constructor(race, name, language, spell) {
+    super(race, name, language);
+    this.spell = spell;
+  }
+
+  talk() {
+    console.log(`My name is ${this.name}`);
+  }
+
+  magic() {
+    console.log(this.spell);
+  }
+}
+class Ork extends Hero {
+  constructor(race, name, language, sword) {
+    super(race, name, language);
+    this.sword = sword;
+  }
+
+  talk() {
+    console.log(`My second name is ${this.name}`);
+  }
+
+  damage() {
+    console.log(this.sword);
+  }
+}
